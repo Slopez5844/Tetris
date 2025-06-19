@@ -170,7 +170,7 @@ function Tetris() {
     document.onkeydown = keyboard.event;
 
     /**
-     * Window replaces game area, for example help window
+     * La ventana reemplaza el área de juego, por ejemplo, la ventana de ayuda
      * @param string id
      */
     function Window(id) {
@@ -180,7 +180,7 @@ function Tetris() {
         var self = this;
         
         /**
-         * Activate or deactivate a window - update html
+         * Activar o desactivar una ventana - actualizar html
          * @return void
          * @access event
          */
@@ -189,7 +189,7 @@ function Tetris() {
         }
         
         /**
-         * Close window - update html
+         * Cerrar ventana - actualizar html
          * @return void
          * @access event
          */
@@ -207,8 +207,8 @@ function Tetris() {
     }
 
     /**
-     * Assigning functions to keyboard events
-     * When key is pressed, searching in a table if any function has been assigned to this key, execute the function.
+     * Asignar funciones a eventos del teclado
+     * Al presionar una tecla, buscar en una tabla si se le ha asignado alguna función a esta tecla y ejecutar la función.
      */
     function Keyboard() {
 
@@ -254,8 +254,8 @@ function Tetris() {
     }
 
     /**
-     * Live game statistics
-     * Updating html
+     * Estadísticas de juego en vivo
+     * Actualizando html
      */
     function Stats() {
 
@@ -264,7 +264,7 @@ function Tetris() {
         this.apm;
         this.lines;
         this.score;
-        this.puzzles; // number of puzzles created on current level
+        this.puzzles; // Número de rompecabezas creados en el nivel actual
         
         this.actions;
 
@@ -280,7 +280,7 @@ function Tetris() {
         var self = this;
         
         /**
-         * Start counting statistics, reset stats, turn on the timer
+         * Comience a contar estadísticas, restablezca las estadísticas, active el temporizador
          * @return void
          * @access public
          */
@@ -290,7 +290,7 @@ function Tetris() {
         }
 
         /**
-         * Stop counting statistics, turn off the timer
+         * Deja de contar estadísticas, apaga el temporizador.
          * @return void
          * @access public
          */
@@ -301,7 +301,7 @@ function Tetris() {
         }
 
         /**
-         * Reset statistics - update html
+         * Restablecer estadísticas - actualizar html
          * @return void
          * @access public
          */
@@ -322,8 +322,8 @@ function Tetris() {
         }
         
         /**
-         * Increase time, update apm - update html
-         * This func is called by setInterval()
+         * Aumentar tiempo, actualizar apm - actualizar html
+         * Esta función se llama mediante setInterval()
          * @return void
          * @access public event
          */
@@ -335,7 +335,7 @@ function Tetris() {
         }
 
         /**
-         * Set score - update html
+         * Establecer puntuación - actualizar html
          * @param int i
          * @return void
          * @access public
@@ -346,7 +346,7 @@ function Tetris() {
         }
 
         /**
-         * Set level - update html
+         * Establecer nivel - actualizar html
          * @param int i
          * @return void
          * @access public
@@ -357,7 +357,7 @@ function Tetris() {
         }
         
         /**
-         * Set lines - update html
+         * Establecer líneas - actualizar html
          * @param int i
          * @return void
          * @access public
@@ -368,7 +368,7 @@ function Tetris() {
         }
 
         /**
-         * Number of puzzles created on current level
+         * Número de rompecabezas creados en el nivel actual
          * @param int i
          * @return void
          * @access public
@@ -411,7 +411,7 @@ function Tetris() {
         }
 
         /**
-         * Number of puzzles created on current level
+         * Número de rompecabezas creados en el nivel actual
          * @return int
          * @access public
          */
@@ -429,8 +429,8 @@ function Tetris() {
     }
 
     /**
-     * Area consists of blocks (2 dimensional board).
-     * Block contains "0" (if empty) or Html Object.
+     * El área consta de bloques (tablero bidimensional).
+     * El bloque contiene "0" (si está vacío) u objeto HTML.
      * @param int x
      * @param int y
      * @param string id
@@ -444,7 +444,7 @@ function Tetris() {
 
         this.board = [];
         
-        // create 2-dimensional board
+        // crear un tablero bidimensional
         for (var y = 0; y < this.y; y++) {
             this.board.push(new Array());
             for (var x = 0; x < this.x; x++) {
@@ -453,7 +453,7 @@ function Tetris() {
         }
 
         /**
-         * Removing html elements from area.
+         * Eliminar elementos html del área.
          * @return void
          * @access public
          */
@@ -469,10 +469,10 @@ function Tetris() {
         }
 
         /**
-         * Searching for full lines.
-         * Must go from the bottom of area to the top.
-         * Returns the number of lines removed - needed for Stats.score.
-         * @see isLineFull() removeLine()
+         * Buscando líneas completas.
+         * Debe ir desde la parte inferior del área hasta la parte superior.
+         * Devuelve el número de líneas eliminadas (necesario para Stats.score).
+         * @see isLineFull() eliminarLínea()
          * @return void
          * @access public
          */
@@ -501,9 +501,9 @@ function Tetris() {
         }
 
         /**
-         * Remove given line
-         * Remove html objects
-         * All lines that are above given line move down by 1 unit
+         * Eliminar la línea dada
+         * Eliminar objetos html
+         * Todas las líneas que están por encima de la línea dada se mueven hacia abajo 1 unidad
          * @param int y
          * @return void
          * @access public
@@ -529,7 +529,7 @@ function Tetris() {
         /**
          * @param int y
          * @param int x
-         * @return mixed 0 or Html Object
+         * @return Objeto HTML o 0 mixto
          * @access public
          */
         this.getBlock = function(y, x) {
@@ -542,8 +542,8 @@ function Tetris() {
         }
 
         /**
-         * Add Html Element to the area.
-         * Find (x,y) position using offsetTop and offsetLeft
+         * Añade un elemento HTML al área.
+         * Encuentra la posición (x,y) usando offsetTop y offsetLeft
          * @param object el
          * @return void
          * @access public
@@ -554,14 +554,14 @@ function Tetris() {
             if (y >= 0 && y < this.y && x >= 0 && x < this.x) {
                 this.board[y][x] = el;
             } else {
-                // not always an error ..
+                // No siempre es un error..
             }
         }
     }
 
     /**
-     * Puzzle consists of blocks.
-     * Each puzzle after rotating 4 times, returns to its primitive position.
+     * El rompecabezas consta de bloques.
+     * Cada rompecabezas, después de girar 4 veces, vuelve a su posición primitiva.
      */
     function Puzzle(tetris, area) {
 
@@ -569,26 +569,26 @@ function Tetris() {
         this.tetris = tetris;
         this.area = area;
 
-        // timeout ids
+        // identificadores de tiempo de espera
         this.fallDownID = null;
         this.forceMoveDownID = null;
 
         this.type = null; // 0..6
-        this.nextType = null; // next puzzle
+        this.nextType = null; // próximo rompecabezas
         this.position = null; // 0..3
         this.speed = null;
         this.running = null;
         this.stopped = null;
 
-        this.board = []; // filled with html elements after placing on area
+        this.board = []; // Relleno de elementos html después de colocarlo en el área.
         this.elements = [];
-        this.nextElements = []; // next board elements
+        this.nextElements = []; // siguientes elementos del tablero
 
-        // (x,y) position of the puzzle (top-left)
+        // (x,y) posición del rompecabezas (arriba a la izquierda)
         this.x = null;
         this.y = null;
         
-        // width & height must be the same
+        // El ancho y la altura deben ser iguales
         this.puzzles = [
             [
                 [0,0,1],
@@ -628,7 +628,7 @@ function Tetris() {
         ];
 
         /**
-         * Reset puzzle. It does not destroy html elements in this.board.
+         * Reiniciar rompecabezas. No destruye los elementos HTML de este tablero.
          * @return void
          * @access public
          */
@@ -659,7 +659,7 @@ function Tetris() {
         this.reset();
 
         /**
-         * Check whether puzzle is running.
+         * Comprueba si el rompecabezas se está ejecutando.
          * @return bool
          * @access public
          */
@@ -668,10 +668,10 @@ function Tetris() {
         }
 
         /**
-         * Check whether puzzle has been stopped by user. It happens when user clicks
-         * "down" when puzzle is already at the bottom of area. The puzzle may still
-         * be running with event fallDown(). When puzzle is stopped, no actions will be
-         * performed when user press a key.
+         * Comprueba si el usuario ha detenido el rompecabezas. Esto ocurre cuando el usuario hace clic.
+         * "Abajo" cuando el rompecabezas ya está en la parte inferior del área. El rompecabezas aún puede
+         * Se ejecutará con el evento fallDown(). Cuando el rompecabezas se detiene, no se realizará ninguna acción.
+         * Se realiza cuando el usuario presiona una tecla.
          * @return bool
          * @access public
          */
@@ -680,7 +680,7 @@ function Tetris() {
         }
 
         /**
-         * Get X position of puzzle (top-left)
+         * Obtener la posición X del rompecabezas (arriba a la izquierda)
          * @return int
          * @access public
          */
