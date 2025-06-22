@@ -221,3 +221,26 @@ canvas#stars {
   z-index: 0;
 }
 
+/*estilo base para escritorio*/
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+/*ejemplo de una caja en el layout*/
+.box {
+    flex: 1;
+    background-color: #e0e0e0;
+    padding: 20px;
+    text-align: center;
+}
+
+/*meia query para pantallas menores a 760px tablets y moviles*/
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
