@@ -170,7 +170,7 @@ function Tetris() {
     document.onkeydown = keyboard.event;
 
     /**
-     * La ventana reemplaza el área de juego, por ejemplo, la ventana de ayuda
+     * Window replaces game area, for example help window
      * @param string id
      */
     function Window(id) {
@@ -180,7 +180,7 @@ function Tetris() {
         var self = this;
         
         /**
-         * Activar o desactivar una ventana - actualizar html
+         * Activate or deactivate a window - update html
          * @return void
          * @access event
          */
@@ -189,7 +189,7 @@ function Tetris() {
         }
         
         /**
-         * Cerrar ventana - actualizar html
+         * Close window - update html
          * @return void
          * @access event
          */
@@ -207,8 +207,8 @@ function Tetris() {
     }
 
     /**
-     * Asignar funciones a eventos del teclado
-     * Al presionar una tecla, buscar en una tabla si se le ha asignado alguna función a esta tecla y ejecutar la función.
+     * Assigning functions to keyboard events
+     * When key is pressed, searching in a table if any function has been assigned to this key, execute the function.
      */
     function Keyboard() {
 
@@ -254,8 +254,8 @@ function Tetris() {
     }
 
     /**
-     * Estadísticas de juego en vivo
-     * Actualizando html
+     * Live game statistics
+     * Updating html
      */
     function Stats() {
 
@@ -264,7 +264,7 @@ function Tetris() {
         this.apm;
         this.lines;
         this.score;
-        this.puzzles; // Número de rompecabezas creados en el nivel actual
+        this.puzzles; // number of puzzles created on current level
         
         this.actions;
 
@@ -280,7 +280,7 @@ function Tetris() {
         var self = this;
         
         /**
-         * Comience a contar estadísticas, restablezca las estadísticas, active el temporizador
+         * Start counting statistics, reset stats, turn on the timer
          * @return void
          * @access public
          */
@@ -290,7 +290,7 @@ function Tetris() {
         }
 
         /**
-         * Deja de contar estadísticas, apaga el temporizador.
+         * Stop counting statistics, turn off the timer
          * @return void
          * @access public
          */
@@ -301,7 +301,7 @@ function Tetris() {
         }
 
         /**
-         * Restablecer estadísticas - actualizar html
+         * Reset statistics - update html
          * @return void
          * @access public
          */
@@ -322,8 +322,8 @@ function Tetris() {
         }
         
         /**
-         * Aumentar tiempo, actualizar apm - actualizar html
-         * Esta función se llama mediante setInterval()
+         * Increase time, update apm - update html
+         * This func is called by setInterval()
          * @return void
          * @access public event
          */
@@ -335,18 +335,18 @@ function Tetris() {
         }
 
         /**
-         * Establecer puntuación - actualizar html
+         * Set score - update html
          * @param int i
          * @return void
          * @access public
          */
         this.setScore = function(i) {
             this.score = i;
-            this.el.score.innerHTML = this.score;
+            this.el.score.innerHTML = this.score.toLocaleString();
         }
 
         /**
-         * Establecer nivel - actualizar html
+         * Set level - update html
          * @param int i
          * @return void
          * @access public
@@ -357,7 +357,7 @@ function Tetris() {
         }
         
         /**
-         * Establecer líneas - actualizar html
+         * Set lines - update html
          * @param int i
          * @return void
          * @access public
@@ -368,7 +368,7 @@ function Tetris() {
         }
 
         /**
-         * Número de rompecabezas creados en el nivel actual
+         * Number of puzzles created on current level
          * @param int i
          * @return void
          * @access public
@@ -411,7 +411,7 @@ function Tetris() {
         }
 
         /**
-         * Número de rompecabezas creados en el nivel actual
+         * Number of puzzles created on current level
          * @return int
          * @access public
          */
@@ -429,8 +429,8 @@ function Tetris() {
     }
 
     /**
-     * El área consta de bloques (tablero bidimensional).
-     * El bloque contiene "0" (si está vacío) u objeto HTML.
+     * Area consists of blocks (2 dimensional board).
+     * Block contains "0" (if empty) or Html Object.
      * @param int x
      * @param int y
      * @param string id
@@ -444,7 +444,7 @@ function Tetris() {
 
         this.board = [];
         
-        // crear un tablero bidimensional
+        // create 2-dimensional board
         for (var y = 0; y < this.y; y++) {
             this.board.push(new Array());
             for (var x = 0; x < this.x; x++) {
@@ -453,7 +453,7 @@ function Tetris() {
         }
 
         /**
-         * Eliminar elementos html del área.
+         * Removing html elements from area.
          * @return void
          * @access public
          */
@@ -469,10 +469,10 @@ function Tetris() {
         }
 
         /**
-         * Buscando líneas completas.
-         * Debe ir desde la parte inferior del área hasta la parte superior.
-         * Devuelve el número de líneas eliminadas (necesario para Stats.score).
-         * @see isLineFull() eliminarLínea()
+         * Searching for full lines.
+         * Must go from the bottom of area to the top.
+         * Returns the number of lines removed - needed for Stats.score.
+         * @see isLineFull() removeLine()
          * @return void
          * @access public
          */
@@ -501,9 +501,9 @@ function Tetris() {
         }
 
         /**
-         * Eliminar la línea dada
-         * Eliminar objetos html
-         * Todas las líneas que están por encima de la línea dada se mueven hacia abajo 1 unidad
+         * Remove given line
+         * Remove html objects
+         * All lines that are above given line move down by 1 unit
          * @param int y
          * @return void
          * @access public
@@ -529,7 +529,7 @@ function Tetris() {
         /**
          * @param int y
          * @param int x
-         * @return Objeto HTML o 0 mixto
+         * @return mixed 0 or Html Object
          * @access public
          */
         this.getBlock = function(y, x) {
@@ -542,8 +542,8 @@ function Tetris() {
         }
 
         /**
-         * Añade un elemento HTML al área.
-         * Encuentra la posición (x,y) usando offsetTop y offsetLeft
+         * Add Html Element to the area.
+         * Find (x,y) position using offsetTop and offsetLeft
          * @param object el
          * @return void
          * @access public
@@ -554,14 +554,14 @@ function Tetris() {
             if (y >= 0 && y < this.y && x >= 0 && x < this.x) {
                 this.board[y][x] = el;
             } else {
-                // No siempre es un error..
+                // not always an error ..
             }
         }
     }
 
     /**
-     * El rompecabezas consta de bloques.
-     * Cada rompecabezas, después de girar 4 veces, vuelve a su posición primitiva.
+     * Puzzle consists of blocks.
+     * Each puzzle after rotating 4 times, returns to its primitive position.
      */
     function Puzzle(tetris, area) {
 
@@ -569,26 +569,26 @@ function Tetris() {
         this.tetris = tetris;
         this.area = area;
 
-        // identificadores de tiempo de espera
+        // timeout ids
         this.fallDownID = null;
         this.forceMoveDownID = null;
 
         this.type = null; // 0..6
-        this.nextType = null; // próximo rompecabezas
+        this.nextType = null; // next puzzle
         this.position = null; // 0..3
         this.speed = null;
         this.running = null;
         this.stopped = null;
 
-        this.board = []; // Relleno de elementos html después de colocarlo en el área.
+        this.board = []; // filled with html elements after placing on area
         this.elements = [];
-        this.nextElements = []; // siguientes elementos del tablero
+        this.nextElements = []; // next board elements
 
-        // (x,y) posición del rompecabezas (arriba a la izquierda)
+        // (x,y) position of the puzzle (top-left)
         this.x = null;
         this.y = null;
         
-        // El ancho y la altura deben ser iguales
+        // width & height must be the same
         this.puzzles = [
             [
                 [0,0,1],
@@ -628,7 +628,7 @@ function Tetris() {
         ];
 
         /**
-         * Reiniciar rompecabezas. No destruye los elementos HTML de este tablero.
+         * Reset puzzle. It does not destroy html elements in this.board.
          * @return void
          * @access public
          */
@@ -659,7 +659,7 @@ function Tetris() {
         this.reset();
 
         /**
-         * Comprueba si el rompecabezas se está ejecutando.
+         * Check whether puzzle is running.
          * @return bool
          * @access public
          */
@@ -668,10 +668,10 @@ function Tetris() {
         }
 
         /**
-         * Comprueba si el usuario ha detenido el rompecabezas. Esto ocurre cuando el usuario hace clic.
-         * "Abajo" cuando el rompecabezas ya está en la parte inferior del área. El rompecabezas aún puede
-         * Se ejecutará con el evento fallDown(). Cuando el rompecabezas se detiene, no se realizará ninguna acción.
-         * Se realiza cuando el usuario presiona una tecla.
+         * Check whether puzzle has been stopped by user. It happens when user clicks
+         * "down" when puzzle is already at the bottom of area. The puzzle may still
+         * be running with event fallDown(). When puzzle is stopped, no actions will be
+         * performed when user press a key.
          * @return bool
          * @access public
          */
@@ -680,7 +680,7 @@ function Tetris() {
         }
 
         /**
-         * Obtener la posición X del rompecabezas (arriba a la izquierda)
+         * Get X position of puzzle (top-left)
          * @return int
          * @access public
          */
@@ -1079,8 +1079,8 @@ function Tetris() {
         }
         
         /**
-         * Save scores to cookie.
-         * Note: it is automatically called after adding new score.
+         * Guardar puntuaciones en una cookie.
+* Nota: Se activa automáticamente tras añadir una nueva puntuación.
          * @return void
          * @access public
          */
@@ -1095,7 +1095,7 @@ function Tetris() {
         }
         
         /**
-         * Is the score high enough to be able to add ?
+         * ¿Es la puntuación lo suficientemente alta para poder sumar?
          * @return bool
          * @access public
          */
@@ -1141,7 +1141,7 @@ function Tetris() {
         }
         
         /**
-         * All highscores returned in html friendly format.
+         * Todas las puntuaciones más altas se devuelven en formato compatible con HTML.
          * @return string
          * @access public
          */
@@ -1274,8 +1274,8 @@ var tetris = new Tetris();
     tetris.areaY = 22;
     /*
       TODO:
-      - highscores, adding to cookie
-      - setting own keys, keep in cookie
+- Máximos puntajes, añadir a la cookie
+- Configurar claves propias, guardar en la cookie
     */
 document.addEventListener('DOMContentLoaded', function() {
     const arrowButtons = document.querySelectorAll('.arrow-btn');
@@ -1299,3 +1299,235 @@ function handleButtonPress(button) {
         button.classList.remove('btn-pressed');
     }, 200);
 }
+
+
+// esto tambien solo es una prueba de aver como funciona 
+// Evitar desplazamiento con flechas ()
+document.addEventListener('keydown', function(e) {
+    // Teclas que queremos bloquear (flechas y espacio)
+    const blockedKeys = [37, 38, 39, 40, 32];
+    
+    if (blockedKeys.includes(e.keyCode)) {
+        e.preventDefault();
+    }
+});
+
+// Para los botones visuales de flechas
+const arrowButtons = document.querySelectorAll('.arrow-btn');
+arrowButtons.forEach(button => {
+    button.addEventListener('touchstart', function(e) {
+        e.preventDefault(); // Evita scroll en móviles
+    });
+});
+
+//botones aver que pasa 
+// Conectar botones visuales con el juego
+document.querySelector('.arrow-up').addEventListener('click', function() {
+    tetris.up();
+    this.classList.add('btn-pressed');
+    setTimeout(() => this.classList.remove('btn-pressed'), 200);
+});
+
+document.querySelector('.arrow-down').addEventListener('click', function() {
+    tetris.down();
+    this.classList.add('btn-pressed');
+    setTimeout(() => this.classList.remove('btn-pressed'), 200);
+});
+
+document.querySelector('.arrow-left').addEventListener('click', function() {
+    tetris.left();
+    this.classList.add('btn-pressed');
+    setTimeout(() => this.classList.remove('btn-pressed'), 200);
+});
+
+document.querySelector('.arrow-right').addEventListener('click', function() {
+    tetris.right();
+    this.classList.add('btn-pressed');
+    setTimeout(() => this.classList.remove('btn-pressed'), 200);
+});
+
+//el menu flotante de javascript
+
+ (function() {
+            'use strict';
+            
+            // Variables del menú flotante
+            let floatingMenuOpen = false;
+            let floatingMusicPlaying = false;
+            let floatingCurrentVolume = 50;
+            
+            // Elementos del DOM
+            const floatingMenuBtn = document.getElementById('floatingMenuBtn');
+            const floatingMenuPanel = document.getElementById('floatingMenuPanel');
+            const floatingPlayBtn = document.getElementById('floatingPlayBtn');
+            const floatingPlayIcon = document.getElementById('floatingPlayIcon');
+            const floatingPlayText = document.getElementById('floatingPlayText');
+            const floatingVolumeSlider = document.getElementById('floatingVolumeSlider');
+            const floatingVolumeUp = document.getElementById('floatingVolumeUp');
+            const floatingVolumeDown = document.getElementById('floatingVolumeDown');
+            const floatingVolumeDisplay = document.getElementById('floatingVolumeDisplay');
+            const floatingDarkMode = document.getElementById('floatingDarkMode');
+            const floatingBackgroundMusic = document.getElementById('floatingBackgroundMusic');
+            
+            // Función para toggle del menú
+            function toggleFloatingMenu() {
+                floatingMenuOpen = !floatingMenuOpen;
+                
+                if (floatingMenuOpen) {
+                    floatingMenuPanel.classList.add('show');
+                    floatingMenuBtn.innerHTML = '✕';
+                    floatingMenuBtn.style.background = 'linear-gradient(45deg, #ff6b6b, #ee5a24)';
+                } else {
+                    floatingMenuPanel.classList.remove('show');
+                    floatingMenuBtn.innerHTML = '⚙️';
+                    floatingMenuBtn.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
+                }
+                
+                console.log('Menú flotante:', floatingMenuOpen ? 'Abierto' : 'Cerrado');
+            }
+            
+            // Función para toggle de música
+            function toggleFloatingMusic() {
+                floatingMusicPlaying = !floatingMusicPlaying;
+                
+                if (floatingMusicPlaying) {
+                    floatingPlayIcon.textContent = '⏸️';
+                    floatingPlayText.textContent = 'Pausar';
+                    
+                    // Intentar reproducir música real
+                    try {
+                        floatingBackgroundMusic.play();
+                        console.log('🎵 Música iniciada');
+                    } catch (error) {
+                        console.log('🎵 Música simulada (no hay archivo de audio)');
+                    }
+                } else {
+                    floatingPlayIcon.textContent = '▶️';
+                    floatingPlayText.textContent = 'Reproducir';
+                    
+                    try {
+                        floatingBackgroundMusic.pause();
+                        console.log('⏸️ Música pausada');
+                    } catch (error) {
+                        console.log('⏸️ Música pausada (simulada)');
+                    }
+                }
+            }
+            
+            // Función para actualizar volumen
+            function updateFloatingVolume(volume) {
+                floatingCurrentVolume = Math.max(0, Math.min(100, volume));
+                floatingVolumeSlider.value = floatingCurrentVolume;
+                floatingVolumeDisplay.textContent = floatingCurrentVolume + '%';
+                floatingBackgroundMusic.volume = floatingCurrentVolume / 100;
+                
+                // Guardar preferencia
+                try {
+                    localStorage.setItem('floating_tetris_volume', floatingCurrentVolume);
+                } catch (e) {
+                    console.log('No se pudo guardar el volumen');
+                }
+                
+                console.log('🔊 Volumen:', floatingCurrentVolume + '%');
+            }
+            
+            // Función para modo oscuro
+            function toggleFloatingDarkMode() {
+                const isDark = floatingDarkMode.checked;
+                
+                if (isDark) {
+                    document.body.classList.add('dark-mode');
+                    try {
+                        localStorage.setItem('floating_tetris_theme', 'dark');
+                    } catch (e) {}
+                    console.log('🌙 Modo oscuro activado');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    try {
+                        localStorage.setItem('floating_tetris_theme', 'light');
+                    } catch (e) {}
+                    console.log('☀️ Modo claro activado');
+                }
+            }
+            
+            // Función para cerrar menú al hacer clic fuera
+            function closeFloatingMenuOnClickOutside(event) {
+                if (floatingMenuOpen && !event.target.closest('.floating-menu-wrapper')) {
+                    toggleFloatingMenu();
+                }
+            }
+            
+            // Cargar preferencias guardadas
+            function loadFloatingPreferences() {
+                // Cargar tema
+                try {
+                    const savedTheme = localStorage.getItem('floating_tetris_theme');
+                    if (savedTheme === 'dark') {
+                        floatingDarkMode.checked = true;
+                        document.body.classList.add('dark-mode');
+                    }
+                } catch (e) {}
+                
+                // Cargar volumen
+                try {
+                    const savedVolume = localStorage.getItem('floating_tetris_volume');
+                    if (savedVolume) {
+                        updateFloatingVolume(parseInt(savedVolume));
+                    }
+                } catch (e) {}
+            }
+            
+            // Inicializar cuando el DOM esté listo
+            function initFloatingMenu() {
+                console.log('🚀 Inicializando menú flotante...');
+                
+                // Verificar que todos los elementos existan
+                if (!floatingMenuBtn || !floatingMenuPanel) {
+                    console.error('❌ Error: No se encontraron los elementos del menú flotante');
+                    return;
+                }
+                
+                // Configurar event listeners
+                floatingMenuBtn.addEventListener('click', toggleFloatingMenu);
+                document.addEventListener('click', closeFloatingMenuOnClickOutside);
+                
+                floatingPlayBtn.addEventListener('click', toggleFloatingMusic);
+                
+                floatingVolumeSlider.addEventListener('input', function(e) {
+                    updateFloatingVolume(parseInt(e.target.value));
+                });
+                
+                floatingVolumeUp.addEventListener('click', function() {
+                    updateFloatingVolume(floatingCurrentVolume + 10);
+                });
+                
+                floatingVolumeDown.addEventListener('click', function() {
+                    updateFloatingVolume(floatingCurrentVolume - 10);
+                });
+                
+                floatingDarkMode.addEventListener('change', toggleFloatingDarkMode);
+                
+                // Cargar preferencias
+                loadFloatingPreferences();
+                
+                // Configurar volumen inicial
+                updateFloatingVolume(floatingCurrentVolume);
+                
+                console.log('✅ Menú flotante inicializado correctamente');
+            }
+            
+            // Inicializar cuando el DOM esté listo
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initFloatingMenu);
+            } else {
+                initFloatingMenu();
+            }
+            
+            // esto solo es una prueba del menu 
+            document.addEventListener('keydown', function(e) {
+            if ([37, 38, 39, 40, 32].includes(e.keyCode)) {
+                e.preventDefault();
+            }
+        });
+            
+        })(); // Función auto-ejecutada para aislar el código
